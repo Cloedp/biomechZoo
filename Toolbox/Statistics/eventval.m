@@ -351,7 +351,9 @@ for i = 1:length(fl)
     %
     data = zload(fl{i});
     [~,fname] = fileparts(fl{i});
-    
+    split_fname = strsplit(fname,'_');
+    sub_fname = split_fname{1};
+
     % write additional meta-info
     %
     if i==1
@@ -376,7 +378,7 @@ for i = 1:length(fl)
     check = true;
     count = 1;
     while check
-        if strfind(fname, subjects{count})
+        if strcmp(sub_fname, subjects{count})
             subject = subjects{count};
             check = false;
         else
